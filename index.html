@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Scope</title>
+      <style>
+         * {
+            font-family: sans-serif;
+         }
+
+         #box {
+            width: 400px;
+            height: 400px;
+            border: 4px solid black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow: -2px 1px 0 9999px rgba(255, 255, 255, 1);
+         }
+      </style>
+   </head>
+   <body>
+      <div id="box"></div>
+      <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, cupiditate!</h1>
+      <p>
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quos doloribus atque laboriosam earum perferendis blanditiis sunt possimus error in debitis voluptate ex quae cupiditate rerum et voluptatum molestiae similique vel
+         inventore quas vitae quia, quidem voluptatibus. Harum laudantium soluta quidem iste obcaecati aut hic numquam error similique necessitatibus voluptatibus quia, consectetur, sunt ipsa accusantium ducimus. Quasi vel amet mollitia
+         maiores corrupti veritatis. Laboriosam nulla amet facere, beatae saepe illum nam consectetur cum, quos neque quis officia nihil ad voluptates aliquid tempore vero incidunt reiciendis corrupti at? Rerum odit numquam laboriosam,
+         dolores illo itaque necessitatibus fugit blanditiis, quasi officiis quis.
+      </p>
+      <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, cupiditate!</h1>
+      <p>
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quos doloribus atque laboriosam earum perferendis blanditiis sunt possimus error in debitis voluptate ex quae cupiditate rerum et voluptatum molestiae similique vel
+         inventore quas vitae quia, quidem voluptatibus. Harum laudantium soluta quidem iste obcaecati aut hic numquam error similique necessitatibus voluptatibus quia, consectetur, sunt ipsa accusantium ducimus. Quasi vel amet mollitia
+         maiores corrupti veritatis. Laboriosam nulla amet facere, beatae saepe illum nam consectetur cum, quos neque quis officia nihil ad voluptates aliquid tempore vero incidunt reiciendis corrupti at? Rerum odit numquam laboriosam,
+         dolores illo itaque necessitatibus fugit blanditiis, quasi officiis quis.
+      </p>
+      <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, cupiditate!</h1>
+      <p>
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quos doloribus atque laboriosam earum perferendis blanditiis sunt possimus error in debitis voluptate ex quae cupiditate rerum et voluptatum molestiae similique vel
+         inventore quas vitae quia, quidem voluptatibus. Harum laudantium soluta quidem iste obcaecati aut hic numquam error similique necessitatibus voluptatibus quia, consectetur, sunt ipsa accusantium ducimus. Quasi vel amet mollitia
+         maiores corrupti veritatis. Laboriosam nulla amet facere, beatae saepe illum nam consectetur cum, quos neque quis officia nihil ad voluptates aliquid tempore vero incidunt reiciendis corrupti at? Rerum odit numquam laboriosam,
+         dolores illo itaque necessitatibus fugit blanditiis, quasi officiis quis.
+      </p>
+      <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, cupiditate!</h1>
+      <p>
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quos doloribus atque laboriosam earum perferendis blanditiis sunt possimus error in debitis voluptate ex quae cupiditate rerum et voluptatum molestiae similique vel
+         inventore quas vitae quia, quidem voluptatibus. Harum laudantium soluta quidem iste obcaecati aut hic numquam error similique necessitatibus voluptatibus quia, consectetur, sunt ipsa accusantium ducimus. Quasi vel amet mollitia
+         maiores corrupti veritatis. Laboriosam nulla amet facere, beatae saepe illum nam consectetur cum, quos neque quis officia nihil ad voluptates aliquid tempore vero incidunt reiciendis corrupti at? Rerum odit numquam laboriosam,
+         dolores illo itaque necessitatibus fugit blanditiis, quasi officiis quis.
+      </p>
+      <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, cupiditate!</h1>
+      <p>
+         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quos doloribus atque laboriosam earum perferendis blanditiis sunt possimus error in debitis voluptate ex quae cupiditate rerum et voluptatum molestiae similique vel
+         inventore quas vitae quia, quidem voluptatibus. Harum laudantium soluta quidem iste obcaecati aut hic numquam error similique necessitatibus voluptatibus quia, consectetur, sunt ipsa accusantium ducimus. Quasi vel amet mollitia
+         maiores corrupti veritatis. Laboriosam nulla amet facere, beatae saepe illum nam consectetur cum, quos neque quis officia nihil ad voluptates aliquid tempore vero incidunt reiciendis corrupti at? Rerum odit numquam laboriosam,
+         dolores illo itaque necessitatibus fugit blanditiis, quasi officiis quis.
+      </p>
+
+      <script type="text/javascript">
+         dragElement(document.getElementById("box"));
+
+         function dragElement(elmnt) {
+            var pos1 = 0,
+               pos2 = 0,
+               pos3 = 0,
+               pos4 = 0;
+
+            elmnt.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+               e = e || window.event;
+               e.preventDefault();
+               pos3 = e.clientX;
+               pos4 = e.clientY;
+               document.onmouseup = closeDragElement;
+               document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+               e = e || window.event;
+               e.preventDefault();
+               pos1 = pos3 - e.clientX;
+               pos2 = pos4 - e.clientY;
+               pos3 = e.clientX;
+               pos4 = e.clientY;
+               elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+               elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+            }
+
+            function closeDragElement() {
+               document.onmouseup = null;
+               document.onmousemove = null;
+            }
+         }
+      </script>
+   </body>
+</html>
